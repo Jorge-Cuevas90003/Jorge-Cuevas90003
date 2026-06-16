@@ -1,0 +1,11 @@
+<svg width="900" height="160" viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" font-family="'Arial', sans-serif">
+  <rect width="900" height="160" fill="#111111"/>
+  <rect x="0" y="0" width="4" height="160" fill="#F5E642"/>
+  <rect x="0" y="0" width="900" height="4" fill="#F5E642"/>
+  <text x="30" y="38" font-size="11" font-weight="700" fill="#F5E642" letter-spacing="8">PILOT DOSSIER // JORGE CUEVAS</text>
+  <rect x="30" y="46" width="840" height="2" fill="#F5E642" opacity="0.4"/>
+  <text x="30" y="78" font-size="13" font-weight="400" fill="#EEEEEE" letter-spacing="1">Computer Science Student · Full-Stack Developer · AI Tools Builder</text>
+  <text x="30" y="100" font-size="12" font-weight="400" fill="#BBBBBB" letter-spacing="0.5">Building web apps, desktop tools, mathematical solvers,</text>
+  <text x="30" y="118" font-size="12" font-weight="400" fill="#BBBBBB" letter-spacing="0.5">and AI-powered systems — one commit at a time.</text>
+  <text x="30" y="144" font-size="10" font-weight="700" fill="#F5E642" letter-spacing="4" opacity="0.7">METHODOLOGY: STRUCTURAL INTEGRITY · EXECUTION SPEED · FUNCTIONAL LOGIC</text>
+</svg>

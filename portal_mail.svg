@@ -1,0 +1,6 @@
+<svg width="280" height="44" viewBox="0 0 280 44" xmlns="http://www.w3.org/2000/svg" font-family="'Arial Black', Arial, sans-serif">
+  <rect width="280" height="44" fill="#F5E642" rx="0"/>
+  <rect x="0" y="0" width="4" height="44" fill="#111111"/>
+  <text x="20" y="16" font-size="8" font-weight="700" fill="#111111" letter-spacing="5">CONTACT</text>
+  <text x="20" y="34" font-size="13" font-weight="900" fill="#111111" letter-spacing="2">✉ GET IN TOUCH</text>
+</svg>
