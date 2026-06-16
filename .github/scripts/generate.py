@@ -53,6 +53,22 @@ def get_languages(repo_name):
     except Exception:
         return {}
 
+def get_commit_count():
+    """Get total public commit count via GitHub search API."""
+    try:
+        hdrs = {**HEADERS, "Accept": "application/vnd.github.cloak-preview+json"}
+        r = requests.get(
+            "https://api.github.com/search/commits",
+            headers=hdrs,
+            params={"q": f"author:{USERNAME}", "per_page": 1},
+            timeout=10
+        )
+        if r.status_code == 200:
+            return r.json().get("total_count", 0)
+    except Exception:
+        pass
+    return 0
+
 def get_last_commit():
     try:
         events = get(f"https://api.github.com/users/{USERNAME}/events/public",
@@ -178,34 +194,26 @@ def make_projects_svg(repos):
 </svg>'''
 
 # ─── SVG: stats.svg ──────────────────────────────────────────────────────────
-def make_stats_svg(user, repos, top_lang):
+def make_stats_svg(user, repos, commit_count):
     pub_repos = user.get("public_repos", 0)
-    stars = sum(r.get("stargazers_count", 0) for r in repos)
-    followers = user.get("followers", 0)
-    today = datetime.now(timezone.utc).strftime("%b %d, %Y")
+    today     = datetime.now(timezone.utc).strftime("%b %d, %Y")
 
-    def box(x, label, value, filled=False):
-        bg    = '#F5E642' if filled else 'none'
-        stk   = '' if filled else ' stroke="#F5E642" stroke-width="1.5"'
-        tcol  = '#111111' if filled else '#F5E642'
-        scol  = '#111111' if filled else '#888888'
-        return f'''
-  <rect x="{x}" y="50" width="190" height="68" fill="{bg}"{stk}/>
-  <text x="{x + 95}" y="78" font-size="22" font-weight="900" fill="{tcol}" text-anchor="middle">{value}</text>
-  <text x="{x + 95}" y="100" font-size="9" font-weight="700" fill="{scol}" text-anchor="middle" letter-spacing="3">{label}</text>'''
-
-    b1 = box(30,  "PUBLIC REPOS",  pub_repos, filled=True)
-    b2 = box(232, "TOTAL STARS",   stars)
-    b3 = box(434, "TOP LANGUAGE",  top_lang[:8].upper() if top_lang else "—")
-    b4 = box(636, "FOLLOWERS",     followers)
-
-    return f'''<svg width="900" height="140" viewBox="0 0 900 140" xmlns="http://www.w3.org/2000/svg" font-family="'Arial Black', Arial, sans-serif">
-  <rect width="900" height="140" fill="#111111"/>
+    return f'''<svg width="900" height="120" viewBox="0 0 900 120" xmlns="http://www.w3.org/2000/svg" font-family="'Arial Black', Arial, sans-serif">
+  <rect width="900" height="120" fill="#111111"/>
   <rect x="0" y="0" width="900" height="4" fill="#F5E642"/>
-  <text x="30" y="30" font-size="9" font-weight="700" fill="#F5E642" letter-spacing="8">SYSTEM METRICS // LIVE STATS</text>
+  <text x="30" y="30" font-size="9" font-weight="700" fill="#F5E642" letter-spacing="8">SYSTEM METRICS</text>
   <rect x="30" y="36" width="840" height="1" fill="#F5E642" opacity="0.3"/>
   <text x="870" y="30" font-size="8" fill="#444444" text-anchor="end">updated {today}</text>
-  {b1}{b2}{b3}{b4}
+
+  <!-- Repos box — filled -->
+  <rect x="30" y="50" width="400" height="54" fill="#F5E642"/>
+  <text x="230" y="83" font-size="28" font-weight="900" fill="#111111" text-anchor="middle">{pub_repos}</text>
+  <text x="230" y="97" font-size="9"  font-weight="700" fill="#111111" text-anchor="middle" letter-spacing="4">PUBLIC REPOS</text>
+
+  <!-- Commits box — outline -->
+  <rect x="442" y="50" width="428" height="54" fill="none" stroke="#F5E642" stroke-width="1.5"/>
+  <text x="656" y="83" font-size="28" font-weight="900" fill="#F5E642" text-anchor="middle">{commit_count}</text>
+  <text x="656" y="97" font-size="9"  font-weight="700" fill="#888888" text-anchor="middle" letter-spacing="4">TOTAL COMMITS</text>
 </svg>'''
 
 # ─── SVG: last_commit.svg ────────────────────────────────────────────────────
@@ -225,21 +233,23 @@ def make_last_commit_svg(commit):
 # ─── Main ────────────────────────────────────────────────────────────────────
 def main():
     print("Fetching GitHub data…")
-    user   = get_user()
-    repos  = get_repos()
-    langs  = aggregate_languages(repos)
-    commit = get_last_commit()
+    user         = get_user()
+    repos        = get_repos()
+    langs        = aggregate_languages(repos)
+    commit       = get_last_commit()
+    commit_count = get_commit_count()
 
     top_lang = langs[0][0] if langs else "—"
-    print(f"  User:      {user.get('login')}")
-    print(f"  Repos:     {len(repos)}")
-    print(f"  Top lang:  {top_lang}")
-    print(f"  Last commit: {commit['message'][:40]}")
+    print(f"  User:         {user.get('login')}")
+    print(f"  Repos:        {len(repos)}")
+    print(f"  Top lang:     {top_lang}")
+    print(f"  Commit count: {commit_count}")
+    print(f"  Last commit:  {commit['message'][:40]}")
 
     files = {
         "stack.svg":       make_stack_svg(langs),
         "projects.svg":    make_projects_svg(repos),
-        "stats.svg":       make_stats_svg(user, repos, top_lang),
+        "stats.svg":       make_stats_svg(user, repos, commit_count),
         "last_commit.svg": make_last_commit_svg(commit),
     }
 
@@ -252,3 +262,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
