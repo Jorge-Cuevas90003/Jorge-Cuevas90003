@@ -174,7 +174,7 @@ def make_projects_svg(repos):
         return f'''
   <rect x="{x_offset}" y="52" width="3" height="90" fill="#F5E642"/>
   <text x="{x_offset + 14}" y="70" font-size="10" font-weight="700" fill="#F5E642" letter-spacing="5">0{num} — {name[:22].upper()}</text>
-  <text x="{x_offset + 14}" y="88" font-size="11" font-weight="400" fill="#CCCCCC">{lang} · ★ {stars}</text>
+  <text x="{x_offset + 14}" y="88" font-size="11" font-weight="400" fill="#CCCCCC">{lang}</text>
   <text x="{x_offset + 14}" y="106" font-size="10" font-weight="400" fill="#888888">{desc}</text>
   <text x="{x_offset + 14}" y="130" font-size="9" fill="#555555">pushed {date}</text>'''
 
@@ -196,8 +196,17 @@ def make_projects_svg(repos):
 # ─── SVG: stats.svg ──────────────────────────────────────────────────────────
 def make_stats_svg(user, repos, commit_count, top_lang):
     pub_repos = user.get("public_repos", 0)
-    lang      = top_lang[:10].upper() if top_lang else "—"
     today     = datetime.now(timezone.utc).strftime("%b %d, %Y")
+
+    # Abbreviate long language names so they fit in the box
+    ABBREV = {
+        "JavaScript": "JS", "TypeScript": "TS", "C++": "C++",
+        "C#": "C#", "HTML": "HTML", "CSS": "CSS",
+        "Python": "PYTHON", "Java": "JAVA", "Rust": "RUST",
+        "Kotlin": "KOTLIN", "Swift": "SWIFT", "Go": "GO",
+        "Ruby": "RUBY", "Shell": "SHELL", "Dockerfile": "DOCKER",
+    }
+    lang = ABBREV.get(top_lang, top_lang[:8].upper()) if top_lang else "—"
 
     return f'''<svg width="900" height="120" viewBox="0 0 900 120" xmlns="http://www.w3.org/2000/svg" font-family="'Arial Black', Arial, sans-serif">
   <rect width="900" height="120" fill="#111111"/>
