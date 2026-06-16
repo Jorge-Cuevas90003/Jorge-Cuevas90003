@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile Preview — Jorge Cuevas</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0d1117;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #c9d1d9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 80px;
+    }
+
+    /* Browser chrome */
+    .topbar {
+      width: 100%; max-width: 900px;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #30363d;
+    }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .red    { background: #ff5f57; }
+    .yellow { background: #ffbd2e; }
+    .green  { background: #28c940; }
+    .url {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 6px; padding: 5px 14px;
+      font-size: 12px; color: #8b949e; flex: 1;
+    }
+
+    /* README card */
+    .card {
+      width: 100%; max-width: 900px;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .card-header {
+      background: #161b22; border-bottom: 1px solid #30363d;
+      padding: 10px 18px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px;
+    }
+    .card-header .repo { color: #58a6ff; font-weight: 600; }
+    .card-header .file { color: #8b949e; }
+    .badge {
+      margin-left: auto; background: #21262d;
+      border: 1px solid #30363d; border-radius: 4px;
+      padding: 3px 10px; font-size: 11px; color: #8b949e;
+    }
+
+    .readme { padding: 36px 44px; }
+    .section { display: flex; justify-content: center; margin: 24px 0; }
+    .section img { max-width: 100%; display: block; }
+    hr { border: none; border-top: 1px solid #30363d; margin: 24px 0; }
+
+    .nav { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 24px 0; }
+    .nav a { transition: opacity .2s, transform .2s; display: block; }
+    .nav a:hover { opacity: .8; transform: translateY(-2px); }
+
+    /* Dynamic badge */
+    .dynamic-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #161b22; border: 1px solid #F5E642;
+      border-radius: 4px; padding: 3px 10px;
+      font-size: 11px; color: #F5E642; font-weight: 700;
+      letter-spacing: 2px; margin-bottom: 16px;
+    }
+    .pulse {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #F5E642;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .4; transform: scale(.7); }
+    }
+
+    /* Info panel */
+    .info-row {
+      width: 100%; max-width: 900px;
+      display: flex; gap: 16px; margin-top: 20px; flex-wrap: wrap;
+    }
+    .info-card {
+      background: #161b22; border: 1px solid #30363d;
+      border-radius: 8px; padding: 14px 18px; flex: 1; min-width: 220px;
+    }
+    .info-card h4 {
+      font-size: 10px; letter-spacing: 3px; color: #F5E642;
+      text-transform: uppercase; margin-bottom: 10px; font-weight: 700;
+    }
+    .info-card p { font-size: 12px; color: #8b949e; line-height: 1.8; }
+    .ok   { color: #3fb950; }
+    .warn { color: #d29922; }
+
+    /* Reload btn */
+    .reload-btn {
+      margin-top: 28px;
+      background: #F5E642; color: #111; border: none;
+      padding: 10px 28px; font-size: 12px; font-weight: 900;
+      letter-spacing: 3px; cursor: pointer; text-transform: uppercase;
+      transition: opacity .2s;
+    }
+    .reload-btn:hover { opacity: .85; }
+
+    .hint {
+      margin-top: 32px; font-size: 10px; color: #484f58;
+      text-align: center; letter-spacing: 2px; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+    <div class="url">github.com / Jorge-Cuevas90003 / Jorge-Cuevas90003 / README.md</div>
+  </div>
+
+  <div class="dynamic-badge">
+    <div class="pulse"></div>
+    LIVE LOCAL PREVIEW — SVGs served from disk
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="repo">Jorge-Cuevas90003 / Jorge-Cuevas90003</span>
+      <span class="file">/ README.md</span>
+      <span class="badge">📄 Preview</span>
+    </div>
+
+    <div class="readme">
+
+      <!-- STATIC SVGs -->
+      <div class="section">
+        <img src="banner.svg?v=3" width="860" alt="Banner"/>
+      </div>
+      <hr/>
+      <div class="section">
+        <img src="codex.svg?v=3" width="860" alt="Codex"/>
+      </div>
+      <hr/>
+
+      <!-- DYNAMIC SVGs -->
+      <div class="section">
+        <img id="stats"   src="stats.svg?t=0"       width="860" alt="Stats"/>
+      </div>
+      <hr/>
+      <div class="section">
+        <img id="stack"   src="stack.svg?t=0"       width="860" alt="Stack"/>
+      </div>
+      <hr/>
+      <div class="section">
+        <img id="projects" src="projects.svg?t=0"   width="860" alt="Projects"/>
+      </div>
+      <hr/>
+      <div class="section">
+        <img id="commit"  src="last_commit.svg?t=0" width="860" alt="Last Commit"/>
+      </div>
+      <hr/>
+
+      <!-- NAV -->
+      <div class="nav">
+        <a href="#"><img src="portal_temple.svg?v=3" width="260" alt="Portfolio"/></a>
+        <a href="#"><img src="portal_mail.svg?v=3"   width="260" alt="Contact"/></a>
+        <a href="#"><img src="portal_github.svg?v=3" width="260" alt="GitHub"/></a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Info panel -->
+  <div class="info-row">
+    <div class="info-card">
+      <h4>🔄 Dynamic SVGs</h4>
+      <p>
+        <span class="ok">●</span> stats.svg<br/>
+        <span class="ok">●</span> stack.svg<br/>
+        <span class="ok">●</span> projects.svg<br/>
+        <span class="ok">●</span> last_commit.svg<br/>
+        <br/>
+        <span class="warn">⚡</span> Generated by GitHub Actions daily
+      </p>
+    </div>
+    <div class="info-card">
+      <h4>⚙ Generate locally</h4>
+      <p>
+        Run in terminal to refresh SVGs:<br/><br/>
+        <code style="background:#0d1117;padding:4px 8px;border-radius:4px;font-size:11px;color:#F5E642;">
+          $env:GITHUB_TOKEN="tu_token"<br/>
+          python .github/scripts/generate.py
+        </code>
+      </p>
+    </div>
+    <div class="info-card">
+      <h4>◆ Status</h4>
+      <p>
+        <span class="ok">✔</span> Workflow en GitHub<br/>
+        <span class="ok">✔</span> Script listo<br/>
+        <span class="warn">⏳</span> Primer run: ir a Actions → Run workflow<br/>
+        <span class="ok">✔</span> Después: auto diario 6am UTC
+      </p>
+    </div>
+  </div>
+
+  <!-- Reload button to see new SVGs after running the script -->
+  <button class="reload-btn" onclick="reloadDynamic()">⟳ Reload Dynamic SVGs</button>
+
+  <p class="hint">preview local · identical to github.com rendering</p>
+
+  <script>
+    function reloadDynamic() {
+      const t = Date.now();
+      ['stats','stack','projects','commit'].forEach(id => {
+        const img = document.getElementById(id);
+        const base = img.src.split('?')[0];
+        img.src = base + '?t=' + t;
+      });
+    }
+  </script>
+
+</body>
+</html>

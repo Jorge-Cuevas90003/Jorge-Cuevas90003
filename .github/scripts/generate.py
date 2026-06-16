@@ -194,8 +194,9 @@ def make_projects_svg(repos):
 </svg>'''
 
 # ─── SVG: stats.svg ──────────────────────────────────────────────────────────
-def make_stats_svg(user, repos, commit_count):
+def make_stats_svg(user, repos, commit_count, top_lang):
     pub_repos = user.get("public_repos", 0)
+    lang      = top_lang[:10].upper() if top_lang else "—"
     today     = datetime.now(timezone.utc).strftime("%b %d, %Y")
 
     return f'''<svg width="900" height="120" viewBox="0 0 900 120" xmlns="http://www.w3.org/2000/svg" font-family="'Arial Black', Arial, sans-serif">
@@ -206,14 +207,19 @@ def make_stats_svg(user, repos, commit_count):
   <text x="870" y="30" font-size="8" fill="#444444" text-anchor="end">updated {today}</text>
 
   <!-- Repos box — filled -->
-  <rect x="30" y="50" width="400" height="54" fill="#F5E642"/>
-  <text x="230" y="83" font-size="28" font-weight="900" fill="#111111" text-anchor="middle">{pub_repos}</text>
-  <text x="230" y="97" font-size="9"  font-weight="700" fill="#111111" text-anchor="middle" letter-spacing="4">PUBLIC REPOS</text>
+  <rect x="30" y="50" width="268" height="54" fill="#F5E642"/>
+  <text x="164" y="83" font-size="26" font-weight="900" fill="#111111" text-anchor="middle">{pub_repos}</text>
+  <text x="164" y="97" font-size="9"  font-weight="700" fill="#111111" text-anchor="middle" letter-spacing="3">PUBLIC REPOS</text>
 
   <!-- Commits box — outline -->
-  <rect x="442" y="50" width="428" height="54" fill="none" stroke="#F5E642" stroke-width="1.5"/>
-  <text x="656" y="83" font-size="28" font-weight="900" fill="#F5E642" text-anchor="middle">{commit_count}</text>
-  <text x="656" y="97" font-size="9"  font-weight="700" fill="#888888" text-anchor="middle" letter-spacing="4">TOTAL COMMITS</text>
+  <rect x="310" y="50" width="268" height="54" fill="none" stroke="#F5E642" stroke-width="1.5"/>
+  <text x="444" y="83" font-size="26" font-weight="900" fill="#F5E642" text-anchor="middle">{commit_count}</text>
+  <text x="444" y="97" font-size="9"  font-weight="700" fill="#888888" text-anchor="middle" letter-spacing="3">TOTAL COMMITS</text>
+
+  <!-- Top lang box — outline -->
+  <rect x="590" y="50" width="280" height="54" fill="none" stroke="#F5E642" stroke-width="1.5"/>
+  <text x="730" y="83" font-size="20" font-weight="900" fill="#F5E642" text-anchor="middle">{lang}</text>
+  <text x="730" y="97" font-size="9"  font-weight="700" fill="#888888" text-anchor="middle" letter-spacing="3">TOP LANGUAGE</text>
 </svg>'''
 
 # ─── SVG: last_commit.svg ────────────────────────────────────────────────────
@@ -236,7 +242,6 @@ def main():
     user         = get_user()
     repos        = get_repos()
     langs        = aggregate_languages(repos)
-    commit       = get_last_commit()
     commit_count = get_commit_count()
 
     top_lang = langs[0][0] if langs else "—"
@@ -244,13 +249,11 @@ def main():
     print(f"  Repos:        {len(repos)}")
     print(f"  Top lang:     {top_lang}")
     print(f"  Commit count: {commit_count}")
-    print(f"  Last commit:  {commit['message'][:40]}")
 
     files = {
-        "stack.svg":       make_stack_svg(langs),
-        "projects.svg":    make_projects_svg(repos),
-        "stats.svg":       make_stats_svg(user, repos, commit_count),
-        "last_commit.svg": make_last_commit_svg(commit),
+        "stack.svg":    make_stack_svg(langs),
+        "projects.svg": make_projects_svg(repos),
+        "stats.svg":    make_stats_svg(user, repos, commit_count, top_lang),
     }
 
     for filename, content in files.items():
