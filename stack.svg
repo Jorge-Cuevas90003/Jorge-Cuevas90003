@@ -3,26 +3,26 @@
   <rect x="0" y="0" width="900" height="4" fill="#F5E642"/>
   <text x="30" y="30" font-size="9" font-weight="700" fill="#F5E642" letter-spacing="8">TECH STACK // SORTED BY ACTUAL USAGE</text>
   <rect x="30" y="36" width="840" height="1" fill="#F5E642" opacity="0.3"/>
-  <text x="820" y="30" font-size="8" fill="#444444" text-anchor="end">updated Jul 25, 2026</text>
-  <rect x="30" y="70" width="315" height="28" fill="#F5E642"/>
-  <rect x="345" y="70" width="178" height="28" fill="none" stroke="#F5E642" stroke-width="1.5"/>
-  <rect x="523" y="70" width="105" height="28" fill="none" stroke="#F5E642" stroke-width="1.5"/>
-  <rect x="628" y="70" width="89" height="28" fill="none" stroke="#F5E642" stroke-width="1.5"/>
-  <rect x="717" y="70" width="70" height="28" fill="none" stroke="#F5E642" stroke-width="1.5"/>
-  <rect x="787" y="70" width="56" height="28" fill="none" stroke="#444444" stroke-width="1"/>
-  <rect x="843" y="70" width="25" height="28" fill="none" stroke="#444444" stroke-width="1"/>
-  <text x="187" y="89" font-size="9" font-weight="700" fill="#111111" text-anchor="middle">JAVASC</text>
-  <text x="434" y="89" font-size="9" font-weight="700" fill="#F5E642" text-anchor="middle">HTML</text>
-  <text x="575" y="89" font-size="9" font-weight="700" fill="#F5E642" text-anchor="middle">JAVA</text>
-  <text x="672" y="89" font-size="9" font-weight="700" fill="#F5E642" text-anchor="middle">PYTHON</text>
-  <text x="752" y="89" font-size="9" font-weight="700" fill="#F5E642" text-anchor="middle">C#</text>
-  <text x="815" y="89" font-size="9" font-weight="700" fill="#555555" text-anchor="middle">PHP</text>
-  <text x="855" y="89" font-size="9" font-weight="700" fill="#555555" text-anchor="middle">CSS</text>
-  <text x="187" y="116" font-size="8" fill="#F5E642" text-anchor="middle">37.6%</text>
-  <text x="434" y="116" font-size="8" fill="#F5E642" text-anchor="middle">21.2%</text>
-  <text x="575" y="116" font-size="8" fill="#F5E642" text-anchor="middle">12.6%</text>
-  <text x="672" y="116" font-size="8" fill="#F5E642" text-anchor="middle">10.6%</text>
-  <text x="752" y="116" font-size="8" fill="#F5E642" text-anchor="middle">8.4%</text>
-  <text x="815" y="116" font-size="8" fill="#555555" text-anchor="middle">6.7%</text>
-  <text x="855" y="116" font-size="8" fill="#555555" text-anchor="middle">3.0%</text>
+  <text x="820" y="30" font-size="8" fill="#444444" text-anchor="end">updated Jul 26, 2026</text>
+  <rect x="30" y="70" width="395" height="28" fill="#F5E642"/>
+  <rect x="425" y="70" width="165" height="28" fill="none" stroke="#F5E642" stroke-width="1.5"/>
+  <rect x="590" y="70" width="84" height="28" fill="none" stroke="#F5E642" stroke-width="1.5"/>
+  <rect x="674" y="70" width="73" height="28" fill="none" stroke="#F5E642" stroke-width="1.5"/>
+  <rect x="747" y="70" width="55" height="28" fill="none" stroke="#444444" stroke-width="1"/>
+  <rect x="802" y="70" width="45" height="28" fill="none" stroke="#444444" stroke-width="1"/>
+  <rect x="847" y="70" width="20" height="28" fill="none" stroke="#444444" stroke-width="1"/>
+  <text x="227" y="89" font-size="9" font-weight="700" fill="#111111" text-anchor="middle">JAVASC</text>
+  <text x="507" y="89" font-size="9" font-weight="700" fill="#F5E642" text-anchor="middle">HTML</text>
+  <text x="632" y="89" font-size="9" font-weight="700" fill="#F5E642" text-anchor="middle">JAVA</text>
+  <text x="710" y="89" font-size="9" font-weight="700" fill="#F5E642" text-anchor="middle">PYTHON</text>
+  <text x="774" y="89" font-size="9" font-weight="700" fill="#555555" text-anchor="middle">C#</text>
+  <text x="824" y="89" font-size="9" font-weight="700" fill="#555555" text-anchor="middle">PHP</text>
+  <text x="857" y="89" font-size="9" font-weight="700" fill="#555555" text-anchor="middle">CSS</text>
+  <text x="227" y="116" font-size="8" fill="#F5E642" text-anchor="middle">47.1%</text>
+  <text x="507" y="116" font-size="8" fill="#F5E642" text-anchor="middle">19.7%</text>
+  <text x="632" y="116" font-size="8" fill="#F5E642" text-anchor="middle">10.0%</text>
+  <text x="710" y="116" font-size="8" fill="#F5E642" text-anchor="middle">8.8%</text>
+  <text x="774" y="116" font-size="8" fill="#555555" text-anchor="middle">6.6%</text>
+  <text x="824" y="116" font-size="8" fill="#555555" text-anchor="middle">5.4%</text>
+  <text x="857" y="116" font-size="8" fill="#555555" text-anchor="middle">2.4%</text>
 </svg>
