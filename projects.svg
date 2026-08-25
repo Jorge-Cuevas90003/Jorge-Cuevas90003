@@ -3,18 +3,18 @@
   <rect x="0" y="0" width="900" height="4" fill="#F5E642"/>
   <text x="30" y="30" font-size="9" font-weight="700" fill="#F5E642" letter-spacing="8">LAST UPDATES // TWO MOST RECENT REPOS</text>
   <rect x="30" y="36" width="840" height="1" fill="#F5E642" opacity="0.3"/>
-  <text x="870" y="30" font-size="8" fill="#444444" text-anchor="end">updated Aug 24, 2026</text>
+  <text x="870" y="30" font-size="8" fill="#444444" text-anchor="end">updated Aug 25, 2026</text>
   <rect x="464" y="52" width="1" height="90" fill="#333333"/>
   
   <rect x="30" y="52" width="3" height="90" fill="#F5E642"/>
-  <text x="44" y="70" font-size="10" font-weight="700" fill="#F5E642" letter-spacing="5">01 — JORGE-CUEVAS90003</text>
-  <text x="44" y="88" font-size="11" font-weight="400" fill="#CCCCCC">HTML</text>
-  <text x="44" y="106" font-size="10" font-weight="400" fill="#888888">Personal GitHub Profile README with dynamic stats, t…</text>
-  <text x="44" y="130" font-size="9" fill="#555555">pushed Aug 23, 2026</text>
+  <text x="44" y="70" font-size="10" font-weight="700" fill="#F5E642" letter-spacing="5">01 — CORTEX-M4-EMBEDDED-DAT</text>
+  <text x="44" y="88" font-size="11" font-weight="400" fill="#CCCCCC">C</text>
+  <text x="44" y="106" font-size="10" font-weight="400" fill="#888888">Estructuras de datos y algoritmos embebidos optimiza…</text>
+  <text x="44" y="130" font-size="9" fill="#555555">pushed Aug 24, 2026</text>
   
   <rect x="476" y="52" width="3" height="90" fill="#F5E642"/>
-  <text x="490" y="70" font-size="10" font-weight="700" fill="#F5E642" letter-spacing="5">02 — CORTEX-BITWISE-LIB</text>
-  <text x="490" y="88" font-size="11" font-weight="400" fill="#CCCCCC">C</text>
-  <text x="490" y="106" font-size="10" font-weight="400" fill="#888888">Libreria en C optimizada para manipulacion de bits y…</text>
-  <text x="490" y="130" font-size="9" fill="#555555">pushed Aug 11, 2026</text>
+  <text x="490" y="70" font-size="10" font-weight="700" fill="#F5E642" letter-spacing="5">02 — JORGE-CUEVAS90003</text>
+  <text x="490" y="88" font-size="11" font-weight="400" fill="#CCCCCC">HTML</text>
+  <text x="490" y="106" font-size="10" font-weight="400" fill="#888888">Personal GitHub Profile README with dynamic stats, t…</text>
+  <text x="490" y="130" font-size="9" fill="#555555">pushed Aug 24, 2026</text>
 </svg>
